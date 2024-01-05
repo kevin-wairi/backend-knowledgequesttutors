@@ -17,3 +17,11 @@
 User.create(username:'james',school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james')
 
 
+user1 = User.create(username: 'user1', school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james')
+user2 = User.create(username: 'user2', school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james')
+
+
+# message1 = user1.messages.create(chat_id: 1, content: 'Hello user2', read_status: false, delivery_status: false)
+# message2 = user2.messages.create(chat_id: 1, content: 'Hi user1', read_status: false, delivery_status: false)
+# message3 = user1.messages.create(chat_id: 2, content: 'How are you?', read_status: false, delivery_status: false)
+# message4 = user2.messages.create(chat_id: 2, content: 'I\'m good, thank you!', read_status: false, delivery_status: false)

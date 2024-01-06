@@ -14,11 +14,11 @@
 
 
 # Run 'rails db:seed' in the terminal to execute these seed entries
-User.create(username:'james',school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james')
+User.create(username:'james',school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james',img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png')
 
 
-user1 = User.create(username: 'user1', school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james')
-user2 = User.create(username: 'user2', school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james')
+user1 = User.create(username: 'user1', school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james',img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png')
+user2 = User.create(username: 'user2', school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james',img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png')
 
 
 # message1 = user1.messages.create(chat_id: 1, content: 'Hello user2', read_status: false, delivery_status: false)

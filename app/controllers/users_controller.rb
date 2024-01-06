@@ -29,7 +29,7 @@
         private
 
         def user_params
-            params.permit(:username, :school,:course, :email,:phoneNumber, :password, :password_confirmation)
+            params.permit(:username, :school,:course, :email,:phoneNumber, :password, :password_confirmation,:img)
         end
         def user_find
             User.find(params[:id])

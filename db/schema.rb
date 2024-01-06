@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_04_165433) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_06_201314) do
   create_table "chats", force: :cascade do |t|
     t.integer "sender_id", null: false
     t.integer "receiver_id", null: false
@@ -20,9 +20,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_165433) do
     t.index ["sender_id"], name: "index_chats_on_sender_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "user_id"
+    t.text "content"
+    t.string "email"
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chat_id", null: false
+    t.integer "receiver_id"
     t.text "content"
     t.boolean "read_status"
     t.boolean "delivery_status"
@@ -54,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_165433) do
     t.string "email"
     t.string "phoneNumber"
     t.string "password_digest"
+    t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

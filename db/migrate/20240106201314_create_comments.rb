@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration[7.0]
       t.text :content
       t.string :email
       t.string :username
+      t.string :user_img
 
       t.timestamps
     end

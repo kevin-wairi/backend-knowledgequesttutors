@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'comments/create'
-  get 'comments/index'
-  get 'comments/show'
-  get 'comments/destroy'
+  post  '/comments', to: 'comments#create'
+  get '/comments', to: 'comments#index'
+  get '/comments', to: 'comments#show'
+  get '/comments', to: 'comments#destroy'
   resources :messages
   resources :chats
   resources :questions

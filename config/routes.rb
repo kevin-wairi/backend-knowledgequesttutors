@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  post  '/password_reset', to: 'password_reset#create'
+  # get '/password_reset', to: 'password_reset#edit'
+  patch '/password_reset_edit/:token', to: 'password_reset#update'
+
+
   post  '/comments', to: 'comments#create'
   get '/comments', to: 'comments#index'
   get '/comments', to: 'comments#show'

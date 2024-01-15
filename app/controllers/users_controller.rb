@@ -1,8 +1,11 @@
     class UsersController < ApplicationController
         rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-        skip_before_action :authorized, only: [:create,:show,:index,:destroy]
+        skip_before_action :authorized, only: [:create,:show,:index,:destroy,:update]
         
+        
+
         def show
+            puts " username  #{params[:id]}"
             user = User.find_by(id: params[:id])
             render json: user,status: :ok
         end
@@ -20,6 +23,12 @@
             render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
         end
 
+        def update
+            user = User.find_by(id: params[:id])
+            user.update(user_params)
+            render json: user,status: :ok
+        end
+
         def destroy
             user = user_find
             user.destroy
@@ -29,7 +38,7 @@
         private
 
         def user_params
-            params.permit(:username, :school,:course, :email,:phoneNumber, :password, :password_confirmation,:img)
+            params.permit(:username, :school,:course, :email,:phoneNumber, :password, :password_confirmation,:img,:isAdmin)
         end
         def user_find
             User.find(params[:id])

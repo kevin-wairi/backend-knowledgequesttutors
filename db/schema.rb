@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_06_201314) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_14_075125) do
   create_table "chats", force: :cascade do |t|
     t.integer "sender_id", null: false
     t.integer "receiver_id", null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_06_201314) do
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chat_id", null: false
+    t.string "user_img"
     t.integer "receiver_id"
     t.text "content"
     t.boolean "read_status"
@@ -53,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_06_201314) do
     t.string "completetime"
     t.string "deliverytime"
     t.string "budget"
+    t.string "academicLevel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
@@ -66,8 +68,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_06_201314) do
     t.string "phoneNumber"
     t.string "password_digest"
     t.string "img"
+    t.boolean "isAdmin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   add_foreign_key "chats", "users", column: "receiver_id"

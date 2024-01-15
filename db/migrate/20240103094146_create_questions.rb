@@ -10,6 +10,7 @@ class CreateQuestions < ActiveRecord::Migration[7.0]
       t.string :completetime
       t.string :deliverytime
       t.string :budget
+      t.string :academicLevel
 
       t.timestamps
     end

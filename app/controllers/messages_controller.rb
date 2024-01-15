@@ -1,13 +1,20 @@
 class MessagesController < ApplicationController
-    skip_before_action :authorized, only: [:create,:index,:destroy]
+    skip_before_action :authorized, only: [:create,:index,:destroy,:show,:update]
+    # before_action :authorized, except: [:public_action1, :public_action2]
+    # before_action :authorized
 
 def create
     
     sender = User.find_by(id: params[:user_id])
     receiver = User.find_by(id: params[:receiver_id])
 
+    chat = Chat.find_by(sender_id: sender.id, receiver_id: receiver.id)
 
-    chat = Chat.find_or_create_by!(sender_id: sender.id, receiver_id: receiver.id)
+    unless chat
+      chat = Chat.find_by(sender_id: receiver.id, receiver_id: sender.id)
+      chat ||= Chat.create!(sender_id: sender.id, receiver_id: receiver.id)
+    end
+
 
     message = chat.messages.create!(message_params)
     render json:{ message: message,receiver_username: receiver.username,receiver_image: receiver.img} ,status: :created
@@ -28,12 +35,13 @@ end
 
 def update  
     message = Message.find_by(id: [params_id])
-
+    render json: messages,status: :ok
 end
+
 private
 
     def message_params
-        params.permit(:user_id,:receiver_id,:chat_id,:content,:read_status,:delivery_status)
+        params.permit(:user_id,:receiver_id,:chat_id,:content,:read_status,:delivery_status,:user_img)
     end
 end
 

@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :phoneNumber
       t.string :password_digest
       t.string :img
+      t.boolean :isAdmin
 
       t.timestamps
     end

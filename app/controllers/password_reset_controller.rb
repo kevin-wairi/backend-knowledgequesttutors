@@ -6,15 +6,21 @@ class PasswordResetController < ApplicationController
     puts "USER: #{user}"
     puts "EMAIL: #{email}"
 
-       user && user.create_reset_digest
+      if user.present?
+        user.create_reset_digest
       # Send reset instructions via email or SMS here
-      UserMailer.password_reset(user).deliver_now
+      # UserMailer.password_reset(user).deliver_now
         
       render json: {
-        alert: "If this user exists, we have sent you a password reset email."
+        message: "If this user exists, we have sent you a password reset email.",
       }
+    else
+      render json: {
+        message: "If this user exists, we have sent you a password reset E-mail.",
+      }
+    end
       rescue ActiveRecord::RecordInvalid => e
-        render json: { alert: "If this user exists, we have sent you a password reset EMAIL." }, status: :unprocessable_entity
+        render json: { message: "If this user exists, we have sent you a password reset EMAIL." }, status: :unprocessable_entity
   end
 
   # def edit
@@ -24,12 +30,12 @@ class PasswordResetController < ApplicationController
     user = User.find_by(reset_digest: params[:token])
     
     if user.present? && user.password_reset_token_valid?(params[:token])
-      puts " "
-      puts "FOUND USER: #{params[:token]}"
-      puts " "
+      # puts " "
+      # puts "FOUND USER: #{params[:token]}"
+      # puts " "
       if user.reset_password(params[:password])
         render json: {
-          alert: "Your password has been successfuly reset!"
+          message: "Your password has been successfuly reset!"
         }
         session[:user_id] = user.id
       else

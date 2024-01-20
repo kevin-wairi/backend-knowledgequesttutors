@@ -9,8 +9,9 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  url: postgresql://backend_knowledgequest_o7nu_user:fVzTNnJlGL0FPR9qeYPPWz9A2B35o8cM@dpg-cmle1la1hbls73c8gg70-a/backend_knowledgequest_o7nu
+  # <<: *default
+  # database: db/development.postgresql
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

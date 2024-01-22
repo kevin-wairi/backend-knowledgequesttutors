@@ -9,7 +9,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  # url: postgresql://backend_knowledgequest_o7nu_user:fVzTNnJlGL0FPR9qeYPPWz9A2B35o8cM@dpg-cmle1la1hbls73c8gg70-a.oregon-postgres.render.com/backend_knowledgequest_o7nu
+  url: postgresql://backend_knowledgequest_o7nu_user:fVzTNnJlGL0FPR9qeYPPWz9A2B35o8cM@dpg-cmle1la1hbls73c8gg70-a.oregon-postgres.render.com/backend_knowledgequest_o7nu
   # <<: *default
   # database: db/development.postgresql
 

@@ -10,8 +10,8 @@ default: &default
 
 development:
   # url: postgresql://backend_knowledgequest_o7nu_user:fVzTNnJlGL0FPR9qeYPPWz9A2B35o8cM@dpg-cmle1la1hbls73c8gg70-a.oregon-postgres.render.com/backend_knowledgequest_o7nu
-  <<: *default
-  database: db/development.postgresql
+  # <<: *default
+  # database: db/development.postgresql
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

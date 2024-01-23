@@ -3,5 +3,8 @@
 set -o errexit
 
 bundle install
+# clean
+rm -rf public
+
 bundle exec rake db:migrate
-bundle exec rake db:seed
+bundle exec rake db:reset

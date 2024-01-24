@@ -7,7 +7,7 @@ class CorsController < ApplicationController
         end
     end
 
-    proteected
+    protected
 
     def cors_set_access_control_headers
         response.headers['Access-Control-Allow-Origin'] = "https://frontend-knowedgequest.onrender.com/"

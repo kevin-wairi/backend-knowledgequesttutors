@@ -7,30 +7,16 @@
 # config/initializers/cors.rb
 
 # config/initializers/cors.rb
+# config/initializers/cors.rb
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins "https://frontend-knowledgequest.onrender.com", /\Ahttp:\/\/192\.168\.0\.\d{1,3}(:\d+)?\z/
+      origins 'https://frontend-knowedgequest.onrender.com' # Replace with your React frontend's domain
   
       resource '*',
         headers: :any,
-        methods: [:get, :post, :delete, :put, :patch, :options, :head],
-        expose: ['Some-Custom-Response-Header'],
-        max_age: 720
-    end
-  
-    allow do
-      origins "https://frontend-knowledgequest.onrender.com"
-      
-      resource '*',
-        headers: :any,
-        methods: :get
-  
-      # Only allow a request for a specific host
-      resource '*',
-        headers: :any,
-        methods: :get,
-        if: proc { |env| env['HTTP_HOST'] == 'https://frontend-knowledgequest.onrender.com' }
+        methods: [:get, :post, :put, :patch, :delete, :options, :head],
+        credentials: true
     end
   end
   

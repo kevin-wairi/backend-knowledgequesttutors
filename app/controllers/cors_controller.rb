@@ -1,7 +1,7 @@
 class CorsController < ApplicationController
 
     def cors_preflight_check
-        if request.mmethod == 'OPTIONS'
+        if request.method == 'OPTIONS'
             cors_set_access_control_headers
         render  text: '', content_type: 'text/plain'
         end

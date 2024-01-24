@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  options '*path', to: 'cors#cors_preflight_check'
-
   post  '/password_reset', to: 'password_reset#create'
   # get '/password_reset', to: 'password_reset#edit'
   patch '/password_reset_edit/:token', to: 'password_reset#update'

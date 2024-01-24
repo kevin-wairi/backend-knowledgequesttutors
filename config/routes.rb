@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
 
-  options '*path', to: 'application#cors_preflight_check'
+  options '*path', to: 'cors#cors_preflight_check'
 
   post  '/password_reset', to: 'password_reset#create'
   # get '/password_reset', to: 'password_reset#edit'
   patch '/password_reset_edit/:token', to: 'password_reset#update'
 
 
-  post  '/comments', to: 'comments#create'
-  get '/comments', to: 'comments#index'
-  get '/comments', to: 'comments#show'
-  get '/comments', to: 'comments#destroy'
+  resources :comments, only: [:index, :show, :create, :destroy]
   resources :messages
   resources :chats
   resources :questions

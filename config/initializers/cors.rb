@@ -7,7 +7,7 @@
 # config/initializers/cors.rb
 
   
-use Rack::Cors do
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
         origins "https://frontend-knowedgequest.onrender.com"
               /\Ahttp:\/\/192\.168\.0\.\d{1,3}(:\d+)?\z/

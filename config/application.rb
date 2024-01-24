@@ -14,12 +14,12 @@ module BackendKnowledgequesttutors
     config.api_only = true
 
      # Configuring CORS to allow requests from a specific origin
-     config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins 'https://frontend-knowedgequest.onrender.com' # Replace with your frontend's actual origin
-        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
-      end
-    end
+    #  config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins 'https://frontend-knowedgequest.onrender.com' # Replace with your frontend's actual origin
+    #     resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+    #   end
+    # end
 
     # configured rails to use cookies -KK
     config.middleware.use ActionDispatch::Cookies

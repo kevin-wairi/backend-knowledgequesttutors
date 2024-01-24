@@ -1,9 +1,11 @@
 class CorsController < ApplicationController
-
+    skip_before_action :authorized
+    
     def cors_preflight_check
         if request.method == 'OPTIONS'
             cors_set_access_control_headers
             render  text: '', content_type: 'text/plain'
+            puts "OKKKKKKKKKKKKKRRRRRRRRR"
         end
     end
 

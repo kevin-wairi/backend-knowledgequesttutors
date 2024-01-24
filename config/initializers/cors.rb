@@ -18,7 +18,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   
     # Add a separate block to handle errors for disallowed origins
     allow do
-      origins "example.com"  # Add your allowed origins here
+        origins "https://frontend-knowedgequest.onrender.com"  # Add your allowed origins here
   
       resource "*",
         headers: :any,

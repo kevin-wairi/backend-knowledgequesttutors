@@ -7,7 +7,7 @@ class CreateQuestions < ActiveRecord::Migration[7.0]
       t.string :details
       t.string :school
       t.string :course
-      t.string :completetime
+      t.integer :pageCount
       t.string :deliverytime
       t.string :budget
       t.string :academicLevel

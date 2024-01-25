@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_14_075125) do
     t.string "details"
     t.string "school"
     t.string "course"
-    t.string "completetime"
+    t.integer "pageCount"
     t.string "deliverytime"
     t.string "budget"
     t.string "academicLevel"

@@ -14,13 +14,12 @@ class QuestionsController < ApplicationController
 
     def show
         question = Question.where(user_id: params[:id])
-        puts "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ  #{question}"
         render json: question ,status: :ok
     end
 
     private
 
     def question_params
-        params.permit(:user_id,:subject,:title,:details,:school,:course,:completetime,:deliverytime,:budget,:academicLevel)
+        params.permit(:user_id,:subject,:title,:details,:school,:course,:pageCount,:deliverytime,:budget,:academicLevel)
     end
 end

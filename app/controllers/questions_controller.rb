@@ -17,9 +17,9 @@ class QuestionsController < ApplicationController
         render json: question ,status: :ok
     end
 
-    private
+private
 
     def question_params
-        params.permit(:user_id,:subject,:title,:details,:school,:course,:pageCount,:deliverytime,:budget,:academicLevel)
+        params.permit(:user_id,:topic,:subject,:details,:school,:pageCount,:deliverytime,:budget,:academicLevel)
     end
 end

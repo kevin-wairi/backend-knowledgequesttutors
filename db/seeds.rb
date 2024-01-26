@@ -14,14 +14,9 @@
 
 
 # Run 'rails db:seed' in the terminal to execute these seed entries
-User.create(username:'Admin',school: '',course:'',email:'admin.mail.com',phoneNumber:'0987654321',password:'james',password_confirmation:'james',img:'
-
-',isAdmin:'true')
+User.create(username:'Admin',school: '',course:'Manager',email:'admin.mail.com',phoneNumber:'0987654321',password:'james',password_confirmation:'james',img:'https://cdn-icons-png.flaticon.com/512/706/706830.png',isAdmin:'true')
 User.create(username:'james',school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james',img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png',isAdmin:'false')
-User.create(username:'john',school: 'schoolB',course:'IT',email:'john.mail.com',phoneNumber:'123456789',password:'john',password_confirmation:'john',img:'https://cdn-icons-png.flaticon.com/512/706/706830.png',isAdmin:'false')
-User.create(username: 'jeff', school: 'schoolC',course:'IT',email:'jeff.mail.com',phoneNumber:'123456789',password:'jeff',password_confirmation:'jeff',img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png',isAdmin:'false')
-User.create(username: 'jackson', school: 'schoolD',course:'IT',email:'jackson.mail.com',phoneNumber:'123456789',password:'jackson',password_confirmation:'jackson',img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png',isAdmin:'false')
-User.create(username: 'jack', school: 'schoolD',course:'IT',email:'254wairi@gmail.com',phoneNumber:'123456789',password:'jackson',password_confirmation:'jackson',img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png',isAdmin:'false')
+
 
 
 # message1 = user1.messages.create(chat_id: 1, content: 'Hello user2', read_status: false, delivery_status: false)
@@ -31,11 +26,10 @@ User.create(username: 'jack', school: 'schoolD',course:'IT',email:'254wairi@gmai
 
 Question.create(
     user_id: 1,
-    subject: 'Computer Science',
-    title: 'How does virtual memory work?',
+    topic: 'Computer Science',
+    subject: 'How does virtual memory work?',
     details: 'I need a detailed explanation of how virtual memory functions in operating systems.',
     school: 'Sample University',
-    course: 'Computer Science',
     pageCount: 5,
     deliverytime: 24, 
     academicLevel: 'Masters',
@@ -43,11 +37,10 @@ Question.create(
 )
 Question.create(
     user_id: 2,
-    subject: 'Mathematics',
-    title: 'Prove Fermat\'s Last Theorem',
+    topic: 'Mathematics',
+    subject: 'Prove Fermat\'s Last Theorem',
     details: 'I am looking for a mathematical proof of Fermat\'s Last Theorem.',
     school: 'Another University',
-    course: 'Mathematics',
     pageCount: 10,
     deliverytime: 48, 
     academicLevel: 'PHD',
@@ -55,11 +48,10 @@ Question.create(
   )
   Question.create(
     user_id: 3,
-    subject: 'History',
-    title: 'Impact of the Industrial Revolution',
+    topic: 'History',
+    subject: 'Impact of the Industrial Revolution',
     details: 'Discuss the significant impact of the Industrial Revolution on society and the economy.',
     school: 'History University',
-    course: 'History',
     pageCount: 8,
     deliverytime: 36, 
     academicLevel: 'College',
@@ -67,11 +59,10 @@ Question.create(
   )
   Question.create(
     user_id: 1,
-    subject: 'Science',
-    title: 'Genetic Engineering Ethics',
+    topic: 'Science',
+    subject: 'Genetic Engineering Ethics',
     details: 'Explore the ethical considerations in genetic engineering and gene editing technologies.',
     school: 'Sample University',
-    course: 'Biotechnology',
     pageCount: 6,
     deliverytime: 72, 
     academicLevel: 'Masters',
@@ -79,16 +70,15 @@ Question.create(
   )
   Question.create(
     user_id: 2,
-    subject: 'Business & Finance',
-    title: 'Impact of Cryptocurrency on Global Economy',
+    topic: 'Business & Finance',
+    subject: 'Impact of Cryptocurrency on Global Economy',
     details: 'Analyze the impact of cryptocurrencies on the global economy and financial systems.',
     school: 'Finance Institute',
-    course: 'Finance',
     pageCount: 12,
     deliverytime: 48, 
     academicLevel: 'PHD',
     budget: 120, 
-  )
+  ) 
 
   # Message.create!(user_id: 1, receiver_id: 2, chat_id: "1", user_img: "https://cdn-icons-png.flaticon.com/512/4322/4322992.png", content: "Good James, wassup", read_status: true, delivery_status: true)
   # Message.create!(user_id: 2, receiver_id: 1, chat_id: "1", user_img: "https://cdn-icons-png.flaticon.com/512/1326/1326377.png", content: "Hey Alex! Not much, just trying to figure out this school assignment. Have you started?", read_status: false, delivery_status: true)

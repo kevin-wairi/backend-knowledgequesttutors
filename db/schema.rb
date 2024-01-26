@@ -46,11 +46,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_14_075125) do
 
   create_table "questions", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.string "topic"
     t.string "subject"
-    t.string "title"
     t.string "details"
     t.string "school"
-    t.string "course"
     t.integer "pageCount"
     t.string "deliverytime"
     t.string "budget"

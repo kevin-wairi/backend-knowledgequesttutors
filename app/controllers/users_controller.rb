@@ -45,5 +45,8 @@
         rescue ActiveRecord::RecordNotFound
             render json: { error: 'User not found' }, status: :not_found
         end
+        def render_not_found_response
+            render json: {error: "user not found"}, status: 404
+          end
         
     end

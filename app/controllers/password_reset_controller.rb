@@ -1,5 +1,5 @@
 class PasswordResetController < ApplicationController
-  skip_before_action :authorized, only: [:create,:show,:index,:destroy,:update]
+  skip_before_action :authorized, only: [:create,:update]
   def create
     email = params[:email]
     user = User.find_by(email: params[:email]&.downcase)

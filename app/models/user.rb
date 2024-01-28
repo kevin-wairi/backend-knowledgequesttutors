@@ -5,6 +5,7 @@ class User < ApplicationRecord
     has_many :questions
     has_many :messages, dependent: :destroy
     has_many :chats, through: :messages
+    has_many :activities, dependent: :destroy
 
 
   validates :username, presence: true

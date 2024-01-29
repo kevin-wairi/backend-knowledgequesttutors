@@ -1,4 +1,4 @@
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :id, :topic,:subject, :details, :school, :deliverytime, :budget, :pageCount,:user,:academicLevel,:created_at
+  attributes :id, :topic,:subject, :details, :deliverytime, :budget, :pageCount,:user,:academicLevel,:created_at
   belongs_to :user, Serializer: UsersController
 end

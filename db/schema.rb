@@ -58,13 +58,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_27_115342) do
   create_table "questions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "topic"
-    t.string "subject"
-    t.string "details"
-    t.string "school"
     t.integer "pageCount"
-    t.string "deliverytime"
+    t.datetime "deliverytime"
     t.string "budget"
     t.string "academicLevel"
+    t.string "subject"
+    t.string "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_questions_on_user_id"

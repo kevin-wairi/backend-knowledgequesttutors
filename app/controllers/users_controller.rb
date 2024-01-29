@@ -5,7 +5,6 @@
         
 
         def show
-            puts " username  #{params[:id]}"
             user = User.find_by(id: params[:id])
             render json: user,status: :ok
         end

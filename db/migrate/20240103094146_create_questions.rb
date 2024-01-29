@@ -3,13 +3,12 @@ class CreateQuestions < ActiveRecord::Migration[7.0]
     create_table :questions do |t|
       t.references :user, null: false, foreign_key: true
       t.string :topic
-      t.string :subject
-      t.string :details
-      t.string :school
       t.integer :pageCount
-      t.string :deliverytime
+      t.datetime :deliverytime
       t.string :budget
       t.string :academicLevel
+      t.string :subject
+      t.string :details
 
       t.timestamps
     end

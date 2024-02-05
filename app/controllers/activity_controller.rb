@@ -27,7 +27,7 @@ class ActivityController < ApplicationController
 
   private
   def activity_params
-    params.permit(:user_id,:activity_type,:details,:status,:activity_id)
+    params.permit(:user_id,:action_type,:resource_id)
   end
 
   def render_not_found_response

@@ -3,10 +3,20 @@ class QuestionsController < ApplicationController
     skip_before_action :authorized, only: [:create,:show,:index,:destroy]
 
     def create
-        user = User.find(params[:user_id]) 
-        question = user.questions.create!(question_params)
-        render json: question,user:UserSerializer,status: :ok
-    rescue ActiveRecord::RecordInvalid => e
+        puts" CREEEEEEEEEEEEEATE #{question_params}"
+        user = User.find(params[:user_id])
+        puts" #{user.username}"
+        if user
+            if params[:files]
+            question = user.questions.create!(question_params)
+            else
+                question = user.questions.create!(question_params.except(:files))
+            end
+            render json: question, status: :ok
+          else
+            render json: { error: 'User not found' }, status: 404
+          end
+     rescue ActiveRecord::RecordInvalid => e
         render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
     end
 
@@ -20,12 +30,24 @@ class QuestionsController < ApplicationController
         render json: question ,status: :ok
     end
 
+    def destroy
+        question = Question.find(id: params[:id])
+      
+        if question
+          question.delete
+          render json: {}, status: :ok
+        else
+          render json: { error: 'Question not found' }, status: 404
+        end
+    end
+
 private
 
     def question_params
-        params.permit(:user_id,:topic,:subject,:details,:pageCount,:deliverytime,:budget,:academicLevel)
+        params.permit(:topic,:pageCount,:deliverytime,:budget,:academicLevel,:subject,:details,:user_id,files: [])
     end
     def render_not_found_response
         render json: {error: "User not found"}, status: 404
       end
 end
+

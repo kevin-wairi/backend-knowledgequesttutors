@@ -7,11 +7,11 @@ User.create(username:'james',school: 'schoolA',course:'IT',email:'james.mail.com
 Question.create(
     user_id: 2,
     topic: 'Computer Science',
+    deliverytime:'Mon Jan 29 20',
+    academicLevel: 'Masters',
     subject: 'How does virtual memory work?',
     details: 'I need a detailed explanation of how virtual memory functions in operating systems.',
     pageCount: 5,
-    deliverytime:'Mon Jan 29 20',
-    academicLevel: 'Masters',
     budget: 50, 
 )
 

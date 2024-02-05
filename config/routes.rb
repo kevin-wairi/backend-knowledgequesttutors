@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/activity', to: 'activity#index'
-  post '/activity', to: 'activity#create'
+  post '/activity/:user_id', to: 'activity#create'
   get '/activity/:user_id', to: 'activity#show'
   delete '/activity/:user_id', to: 'activity#destroy'
 
@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   # get '/password_reset', to: 'password_reset#edit'
   patch '/password_reset_edit/:token', to: 'password_reset#update'
 
+  # get '/questions', to: 'questions#index'
+  # post '/questions', to: 'questions#create'
+  # get '/questions/:id', to: 'questions#show'
+  # delete '/questions/:id', to: 'questions#destroy'
 
   resources :comments, only: [:index, :show, :create, :destroy]
   resources :messages
-  resources :chats
   resources :questions
+  resources :chats
   resources :users
 
     # Authentication routes

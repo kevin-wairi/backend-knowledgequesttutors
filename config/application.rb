@@ -13,15 +13,12 @@ module BackendKnowledgequesttutors
     
     config.api_only = true
 
-
-
     # configured rails to use cookies -KK
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
 
       # config to protect cookies for same domain request only -KK
     config.action_dispatch.cookies_same_site_protection = :strict
-
 
   end
 end

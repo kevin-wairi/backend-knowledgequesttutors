@@ -9,7 +9,6 @@ class CreateQuestions < ActiveRecord::Migration[7.0]
       t.string :academicLevel
       t.string :subject
       t.string :details
-
       t.timestamps
     end
   end

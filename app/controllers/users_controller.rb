@@ -16,9 +16,17 @@
         end
 
         def create
-            user = User.create!(user_params)
-            token = encode_token(user_id: user.id)
-            render json: { user: UserSerializer.new(user), jwt: token }, status: :created
+            user = User.find_by(username: params[:username]) || User.find_by(email: params[:email])
+            if user
+                puts"FOUNDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+                render json: { error: 'User already exists' }
+            else
+                user_params_with_defaults = user_params.merge(isAdmin: false)
+                user = User.create!(user_params_with_defaults)
+                token = encode_token(user_id: user.id)
+                Activity.create(user_id: user.id, action_type: 'user_create', resource_id: user.id)
+                render json: { user: UserSerializer.new(user), jwt: token }, status: :created
+            end
         rescue ActiveRecord::RecordInvalid => e
             render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
         end
@@ -26,6 +34,7 @@
         def update
             user = User.find_by(id: params[:id])
             user.update(user_params)
+            Activity.create(user_id: current_user.id, action_type: 'user_update', resource_id: user.id)
             render json: user,status: :ok
         end
 
@@ -38,7 +47,7 @@
         private
 
         def user_params
-            params.permit(:username, :school,:course, :email,:phoneNumber, :password, :password_confirmation,:img,:isAdmin)
+            params.permit(:username, :school,:course, :email,:phoneNumber, :password, :password_confirmation,:img)
         end
         def user_find
             User.find(params[:id])

@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   
   def create
     comment = Comment.create(comment_params)
+    Activity.create(user_id: current_user.id, action_type: 'create_comment', resource_id: comment.id)
     render json: comment,status: :created
   end
 

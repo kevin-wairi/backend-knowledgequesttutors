@@ -17,6 +17,7 @@ def create
 
 
     message = chat.messages.create!(message_params)
+    Activity.create(user_id: current_user.id, action_type: 'send_message', resource_id: message.id)
     render json:{ message: message,receiver_username: receiver.username,receiver_image: receiver.img} ,status: :created
 rescue ActiveRecord::RecordInvalid => e
     render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get '/activity', to: 'activity#index'
-  post '/activity/:user_id', to: 'activity#create'
   get '/activity/:user_id', to: 'activity#show'
   delete '/activity/:user_id', to: 'activity#destroy'
 
@@ -16,8 +15,8 @@ Rails.application.routes.draw do
   resources :comments, only: [:index, :show, :create, :destroy]
   resources :messages
   resources :questions
-  resources :chats
-  resources :users
+  resources :chats 
+  resources :users 
 
     # Authentication routes
   # get 'auth', to: 'auth#index'

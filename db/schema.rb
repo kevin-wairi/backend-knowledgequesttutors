@@ -40,10 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_184004) do
   end
 
   create_table "activities", force: :cascade do |t|
-    t.string "activity_type"
-    t.text "details"
-    t.string "status"
-    t.integer "activity_id"
+    t.string "action_type"
+    t.integer "resource_id"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

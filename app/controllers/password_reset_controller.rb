@@ -34,6 +34,7 @@ class PasswordResetController < ApplicationController
       # puts "FOUND USER: #{params[:token]}"
       # puts " "
       if user.reset_password(params[:password])
+        Activity.create(user_id: current_user.id, action_type: 'password_reset', resource_id: user.id)
         render json: {
           message: "Your password has been successfuly reset!"
         }

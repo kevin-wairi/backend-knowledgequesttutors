@@ -4,16 +4,16 @@
 User.create(username:'Admin',school: '',course:'Manager',email:'admin.mail.com',phoneNumber:'0987654321',password:'james',password_confirmation:'james',img:'https://cdn-icons-png.flaticon.com/512/706/706830.png',isAdmin:'true')
 User.create(username:'james',school: 'schoolA',course:'IT',email:'james.mail.com',phoneNumber:'123456789',password:'james',password_confirmation:'james',img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png',isAdmin:'false')
 
-Question.create(
-    user_id: 2,
-    topic: 'Computer Science',
-    deliverytime:'Mon Jan 29 20',
-    academicLevel: 'Masters',
-    subject: 'How does virtual memory work?',
-    details: 'I need a detailed explanation of how virtual memory functions in operating systems.',
-    pageCount: 5,
-    budget: 50, 
-)
+# Question.create(
+#     user_id: 2,
+#     topic: 'Computer Science',
+#     deliverytime:'Mon Jan 29 20',
+#     academicLevel: 'Masters',
+#     subject: 'How does virtual memory work?',
+#     details: 'I need a detailed explanation of how virtual memory functions in operating systems.',
+#     pageCount: 5,
+#     budget: 50, 
+# )
 
   # Message.create!(user_id: 1, receiver_id: 2, chat_id: "1", user_img: "https://cdn-icons-png.flaticon.com/512/4322/4322992.png", content: "Good James, wassup", read_status: true, delivery_status: true)
   # Message.create!(user_id: 2, receiver_id: 1, chat_id: "1", user_img: "https://cdn-icons-png.flaticon.com/512/1326/1326377.png", content: "Hey Alex! Not much, just trying to figure out this school assignment. Have you started?", read_status: false, delivery_status: true)

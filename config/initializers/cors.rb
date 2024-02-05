@@ -11,7 +11,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins 'https://frontend-knowedgequest.onrender.com','http://localhost:4000' # Replace with your React frontend's domain
+      origins 'https://frontend-knowedgequest.onrender.com','http://localhost:4000' 
   
       resource '*',
         headers: :any,

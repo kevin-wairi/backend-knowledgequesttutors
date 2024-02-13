@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # get '/questions/:id', to: 'questions#show'
   # delete '/questions/:id', to: 'questions#destroy'
 
+  # get '/messages/:chat_id', to: 'messages#show'
+
   resources :comments, only: [:index, :show, :create, :destroy]
   resources :messages
   resources :questions

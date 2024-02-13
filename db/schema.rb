@@ -70,7 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_184004) do
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chat_id", null: false
-    t.string "user_img"
     t.integer "receiver_id"
     t.text "content"
     t.boolean "read_status"
@@ -102,8 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_184004) do
     t.string "email"
     t.string "phoneNumber"
     t.string "password_digest"
-    t.string "img"
-    t.boolean "isAdmin"
+    t.boolean "isAdmin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "reset_digest"

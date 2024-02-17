@@ -1,17 +1,17 @@
 class ChatsController < ApplicationController
-  skip_before_action :authorized, only: [:show,:index,:destroy]
 
   def create
-      chat = Chat.create!(chat_params)
-      render json: chat,status: :created
-      rescue   ActiveRecord::RecordInvalid => e
-      render json: { error: chat.errors.full_messages }, status: :unprocessable_entity
+    chat = Chat.new(chat_params)
+    chat.save!
+    render json: chat, status: :created
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { error: chat.errors.full_messages }, status: :unprocessable_entity
   end
 
   def index
       chats = Chat.all
       render json: chats,status: :ok
-    end
+  end
     
   def show
           chat = Chat.find_by(id: params[:id])
@@ -20,6 +20,6 @@ class ChatsController < ApplicationController
 
   private
   def chat_params
-      params.permit(:sender_id,:receiver_id,:sender_img,:reciever_img)
+    params.permit(:user_1_id,:user_2_id)
   end
 end

@@ -4,7 +4,6 @@
         skip_before_action :authorized, only: [:create,:show,:index,:destroy,:update]
         
         def index
-            puts"STTTTTTTTTTTTTTTTTTTTTTTTAAAAAAAAAAAAAAAAA"
             users = User.all
             render json: users,status: :ok
         end
@@ -17,7 +16,6 @@
 
 
         def create
-            puts"STTTTTTTTTTTTTTTTTTTTTTTTAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRR #{user_params}"
             user = User.find_by(username: params[:username]) || User.find_by(email: params[:email])
             if user
             render json: {error:'user already exists'},status: 400
@@ -37,7 +35,11 @@
 
         def update
             user = User.find(params[:id])
-            user.update(user_params)
+            if params[:img]
+                user.update(user_params)
+             else
+                user.update(user_params.except(:img))
+            end
             Activity.create(user_id: user.id, action_type: 'user_update', resource_id: user.id)
             render json: user,status: :ok
         end

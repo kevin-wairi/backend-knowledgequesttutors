@@ -6,7 +6,7 @@ class UserSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
   def img
     if object.img.attached?
-       rails_blob_path(object.img, only_path: true) 
+       rails_blob_path(object.img,  only_path: true)
 
     else
       []

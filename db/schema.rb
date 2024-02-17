@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_29_184004) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_16_155238) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,12 +49,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_184004) do
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "sender_id", null: false
-    t.integer "receiver_id", null: false
+    t.integer "user_1_id", null: false
+    t.integer "user_2_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["receiver_id"], name: "index_chats_on_receiver_id"
-    t.index ["sender_id"], name: "index_chats_on_sender_id"
+    t.index ["user_1_id"], name: "index_chats_on_user_1_id"
+    t.index ["user_2_id"], name: "index_chats_on_user_2_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -94,6 +94,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_184004) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "review"
+    t.integer "rating"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "school"
@@ -111,9 +121,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_184004) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
-  add_foreign_key "chats", "users", column: "receiver_id"
-  add_foreign_key "chats", "users", column: "sender_id"
+  add_foreign_key "chats", "users", column: "user_1_id"
+  add_foreign_key "chats", "users", column: "user_2_id"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "reviews", "users"
 end

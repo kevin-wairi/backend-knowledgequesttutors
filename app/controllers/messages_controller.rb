@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
     # before_action :authorized
 
 def create
-    puts"!!!!!!!!!!!!!!!!!!!!!!!!!!111111111111111111111111111111111111111 #{message_params}"
-    chat = Chat.find_by(receiver_id: params[:receiver_id]) || Chat.find_by(sender_id: params[:receiver_id]) || Chat.create!(sender_id: params[:user_id], receiver_id: params[:receiver_id])
+    puts"!!!!!!!!!!!!!!!!!!!!!!!!!!111111111111111111111111111111111111111 "
+    chat = Chat.find_by(user_1_id: params[:user_id],user_2_id: params[:receiver_id]) || Chat.find_by(user_1_id: params[:receiver_id],user_2_id: params[:user_id]) || Chat.create!(user_1_id: params[:user_id], user_2_id: params[:receiver_id])
     puts"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCHAT #{chat}"
 
     message = chat.messages.create!(message_params)

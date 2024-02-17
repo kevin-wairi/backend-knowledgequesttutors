@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   get '/activity', to: 'activity#index'
   get '/activity/:user_id', to: 'activity#show'
   delete '/activity/:user_id', to: 'activity#destroy'

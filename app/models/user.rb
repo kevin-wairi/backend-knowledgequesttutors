@@ -1,11 +1,14 @@
 class User < ApplicationRecord
   attr_accessor :reset_token
+  before_create :set_default_avatar
 
     has_secure_password
+    has_one_attached:img
     has_many :questions
     has_many :messages, dependent: :destroy
     has_many :chats, through: :messages
     has_many :activities, dependent: :destroy
+    has_many :reviews
 
 
   validates :username, presence: true
@@ -30,4 +33,13 @@ class User < ApplicationRecord
     update(password: new_password, reset_sent_at: nil, reset_digest: nil)
   end
 
+  private
+  def set_default_avatar
+    # Set default avatar if no avatar is provided
+    self.img ||= default_avatar_url
+  end
+  def default_avatar_url
+    # Replace 'default_avatar.jpg' with the filename of your default image
+    ActionController::Base.helpers.asset_path('images/profile.jpg')
+  end
 end

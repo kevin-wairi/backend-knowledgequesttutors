@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   get '/activity', to: 'activity#index'
   get '/activity/:user_id', to: 'activity#show'
   delete '/activity/:user_id', to: 'activity#destroy'
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   # post '/questions', to: 'questions#create'
   # get '/questions/:id', to: 'questions#show'
   # delete '/questions/:id', to: 'questions#destroy'
+
+  # get '/messages/:chat_id', to: 'messages#show'
 
   resources :comments, only: [:index, :show, :create, :destroy]
   resources :messages

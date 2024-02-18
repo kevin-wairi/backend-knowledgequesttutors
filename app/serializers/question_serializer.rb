@@ -5,7 +5,12 @@ class QuestionSerializer < ActiveModel::Serializer
   
   def files
     if object.files.attached?
-       object.files.map { |file| rails_blob_path(file, only_path: true) } 
+       object.files.map do |file| {
+        name: file.filename.to_s,
+          content_type: file.content_type,
+          url: rails_blob_path(file, host: 'localhost:3000')
+        }
+      end
     else
       []
     end

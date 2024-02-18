@@ -4,25 +4,16 @@ class MessagesController < ApplicationController
     # before_action :authorized
 
 def create
-    
-    sender = User.find_by(id: params[:user_id])
-    receiver = User.find_by(id: params[:receiver_id])
-
-    chat = Chat.find_by(sender_id: sender.id, receiver_id: receiver.id)
-
-    unless chat
-      chat = Chat.find_by(sender_id: receiver.id, receiver_id: sender.id)
-      chat ||= Chat.create!(sender_id: sender.id, receiver_id: receiver.id)
-    end
-
+    puts"!!!!!!!!!!!!!!!!!!!!!!!!!!111111111111111111111111111111111111111 "
+    chat = Chat.find_by(user_1_id: params[:user_id],user_2_id: params[:receiver_id]) || Chat.find_by(user_1_id: params[:receiver_id],user_2_id: params[:user_id]) || Chat.create!(user_1_id: params[:user_id], user_2_id: params[:receiver_id])
+    puts"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCHAT #{chat}"
 
     message = chat.messages.create!(message_params)
-    Activity.create(user_id: current_user.id, action_type: 'send_message', resource_id: message.id)
-    render json:{ message: message,receiver_username: receiver.username,receiver_image: receiver.img} ,status: :created
+    Activity.create(user_id: params[:user_id], action_type: 'send_message', resource_id: message.id)
+    render json:message ,status: :created
 rescue ActiveRecord::RecordInvalid => e
     render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
 end
-
 
 def index
     messages = Message.all 
@@ -30,7 +21,8 @@ def index
 end
 
 def show
-    messages = Message.find_by(id: params[:id])
+    puts"CHHHHHHHHHHHHHHHHHHHHHHAAAAAAAAAAAAAAAAAAAAAATTTTTTTTT IDDDDDD #{params[:chat_id]}"
+    messages = Message.where(chat_id: params[:id])
     render json: messages,status: :ok
 end
 
@@ -42,7 +34,7 @@ end
 private
 
     def message_params
-        params.permit(:user_id,:receiver_id,:chat_id,:content,:read_status,:delivery_status,:user_img)
+        params.permit(:user_id,:receiver_id,:chat_id,:content,:read_status,:delivery_status)
     end
 end
 

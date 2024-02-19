@@ -1,6 +1,7 @@
 
 # Run 'rails db:seed' in the terminal to execute these seed entries
-# User.create!(username:'Admin',school: '',course:'Manager',email:'admin.mail.com',phoneNumber:'0987654321',password:'james',password_confirmation:'james',isAdmin:'true')
+User.delete_all
+User.create!(username:'Admin',school: '',course:'Manager',email:'admin.mail.com',phoneNumber:'0987654321',password:'james',password_confirmation:'james',isAdmin:'true')
 
 # img:'https://cdn-icons-png.flaticon.com/512/706/706830.png'
 # img:'https://cdn-icons-png.flaticon.com/512/4322/4322992.png'

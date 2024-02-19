@@ -1,5 +1,18 @@
 
 # Run 'rails db:seed' in the terminal to execute these seed entries
+Question.delete_all
+
+# Delete all existing chats
+Chat.delete_all
+
+# Delete all existing messages
+Message.delete_all
+
+# Delete all existing reviews
+Review.delete_all
+
+# Delete all existing activities
+Activity.delete_all
 User.delete_all
 User.create!(username:'Admin',school: '',course:'Manager',email:'admin.mail.com',phoneNumber:'0987654321',password:'james',password_confirmation:'james',isAdmin:'true')
 

@@ -70,7 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_16_155238) do
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chat_id", null: false
-    t.integer "receiver_id"
+    t.integer "user_2_id"
     t.text "content"
     t.boolean "read_status"
     t.boolean "delivery_status"

@@ -5,11 +5,10 @@ class MessagesController < ApplicationController
 
 def create
     puts"!!!!!!!!!!!!!!!!!!!!!!!!!!111111111111111111111111111111111111111 "
-    chat = Chat.find_by(user_1_id: params[:user_id],user_2_id: params[:receiver_id]) || Chat.find_by(user_1_id: params[:receiver_id],user_2_id: params[:user_id]) || Chat.create!(user_1_id: params[:user_id], user_2_id: params[:receiver_id])
-    puts"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCHAT #{chat}"
-
+    chat = Chat.find_by(user_1_id: params[:user_id],user_2_id: params[:user_2_id]) || Chat.find_by(user_1_id: params[:user_2_id],user_2_id: params[:user_id]) || Chat.create!(user_1_id: params[:user_id], user_2_id: params[:user_2_id])
+    puts"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCHAT #{chat.id}"
     message = chat.messages.create!(message_params)
-    Activity.create(user_id: params[:user_id], action_type: 'send_message', resource_id: message.id)
+    Activity.create(user_id: params[:user_2_id], action_type: 'send_message', resource_id: message.id)
     render json:message ,status: :created
 rescue ActiveRecord::RecordInvalid => e
     render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
@@ -21,7 +20,7 @@ def index
 end
 
 def show
-    puts"CHHHHHHHHHHHHHHHHHHHHHHAAAAAAAAAAAAAAAAAAAAAATTTTTTTTT IDDDDDD #{params[:chat_id]}"
+    puts"CHHHHHHHHHHHHHHHHHHHHHHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT IDDDDDD #{params[:chat_id]}"
     messages = Message.where(chat_id: params[:id])
     render json: messages,status: :ok
 end
@@ -34,7 +33,7 @@ end
 private
 
     def message_params
-        params.permit(:user_id,:receiver_id,:chat_id,:content,:read_status,:delivery_status)
+        params.permit(:user_id,:user_2_id,:chat_id,:content,:read_status,:delivery_status)
     end
 end
 

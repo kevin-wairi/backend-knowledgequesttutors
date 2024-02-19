@@ -20,9 +20,7 @@
             if user
             render json: {error:'user already exists'},status: 400
             else
-                if params[:isAdmin].nil?
-                    params[:isAdmin] = false
-                end
+                params[:isAdmin] = false if params[:isAdmin].nil?
                 user = User.create!(user_params)
                 user.img.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'profile.jpg')), filename: 'profile.jpg', content_type: 'image/jpg')
                 token = encode_token(user_id: user.id)
@@ -53,17 +51,20 @@
         private
 
         def user_params
-            params.permit(:username, :school,:course, :email,:phoneNumber, :password,:password_confirmation,:img)
+            params.permit(:username, :school,:course, :email,:phoneNumber, :password,:password_confirmation,:img,:isAdmin)
         end
+
         def user_find
             User.find(params[:id])
         rescue ActiveRecord::RecordNotFound
             render json: { error: 'User not found' }, status: :not_found
         end
+
         def render_not_found_response
             render json: {error: "user not found"}, status: 404
-          end
-          def render_validation_error
+        end
+
+        def render_validation_error
             render json: {error: "user validation error"}, status: 400
         end
         

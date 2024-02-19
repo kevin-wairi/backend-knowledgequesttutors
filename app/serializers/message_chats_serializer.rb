@@ -1,4 +1,4 @@
 class MessageChatsSerializer < ActiveModel::Serializer
-  attributes :id,:user_id,:receiver_id,:content
+  attributes :id,:user_1_id,:user_2_id,:content
 
 end

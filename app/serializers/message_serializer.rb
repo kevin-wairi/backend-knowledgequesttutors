@@ -1,5 +1,5 @@
 class MessageSerializer < ActiveModel::Serializer
-  attributes :id,:receiver_id,:chat_id,:content,:read_status,:delivery_status
+  attributes :id,:user_2_id,:chat_id,:content,:read_status,:delivery_status
    belongs_to :user, serializer: MessagesUserSerializer
 
   #  include Rails.application.routes.url_helpers

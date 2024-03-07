@@ -11,7 +11,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins 'https://frontend-knowedgequest.onrender.com','http://localhost:4000' 
+      origins 'https://frontend-knowedgequest.onrender.com','www.knowledgequesttutor.com'
   
       resource '*',
         headers: :any,
